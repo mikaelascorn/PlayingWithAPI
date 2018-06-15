@@ -131,9 +131,10 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-.container {
-  max-width: 900px;
-  margin: 0 auto; }
+html {
+  font-size: 62.5%; }
 
 body {
-  background: pink; }
+  font-size: 12px;
+  font-size: 1.2rem;
+  background-color: pink; }

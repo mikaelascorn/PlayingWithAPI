@@ -1,10 +1,16 @@
 @import 'setup';
 
-.container {
-	max-width: 900px;
-	margin: 0 auto;
+@mixin fontSize($scale) {
+	font-size: $scale * 1px;
+	font-size: ($scale / 10) * 1rem;
 }
 
-body{
-	background: pink;
+html {
+	font-size: 62.5%;
 }
+
+body {	
+	@include fontSize(12);	
+	background-color: pink;
+}
+

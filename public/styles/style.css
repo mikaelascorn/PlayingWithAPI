@@ -138,3 +138,6 @@ body {
   font-size: 12px;
   font-size: 1.2rem;
   background-color: pink; }
+
+#map {
+  height: 75vh; }

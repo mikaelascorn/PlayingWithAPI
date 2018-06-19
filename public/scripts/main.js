@@ -5,44 +5,61 @@ start with bday info
 Get the product data and use the stored variables to get the data we need.
 
 */
+
+var apiKey = config.api_key;
+
 var app = {};
 
-app.getBday = function (userBday) {
-  console.log(userBday);
-
-  // fac3a83aaa654849a854c0e3d010faa9
-
-  var url = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
-  url += '?' + $.param({
-    'api-key': 'd9bea6db046441fd865b5cb6942ff78d',
-    'q': 'technology',
-    'begin_date': '$(userBday)',
-    'end_date': '$(userBday)'
-    // 'end_date': "19901123"
+var map = void 0;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: { lat: 43.6482644, lng: -79.4000474 },
+    zoom: 10
   });
-  $.ajax({
-    url: url,
-    method: 'GET'
-  }).done(function (result) {
-    console.log(result);
+}
+
+app.selectedArticle = [];
+
+app.randomArticle = function (array) {
+  console.log(array);
+  var oneArticle = Math.floor(Math.random() * array.length);
+  array.splice(array[oneArticle]);
+  app.selectedArticle.push(array[oneArticle]);
+};
+
+// News API
+app.getArticle = function (userArticle) {
+  // console.log(userArticle);
+  return $.ajax({
+    url: 'https://newsapi.org/v2/everything?sources=cbc-news&q=' + userArticle + '&apiKey=fac3a83aaa654849a854c0e3d010faa9'
+  }).then(function (res) {
+    console.log(res.articles);
+    var articlesReturned = res.articles;
+    var articleArray = [];
+
+    articleArray.push(articlesReturned);
+    for (var i = 0; i < articleArray.length; i++) {
+      app.randomArticle(articleArray);
+    }
+    console.log(articleArray);
+    // app.postArticle(articlesReturned)
   }).fail(function (err) {
     throw err;
   });
 };
 
+// users article choice
 app.userInput = function () {
-  $('form').on('submit', function (e) {
+  $('form').on(' submit', function (e) {
     e.preventDefault();
-
-    var birthday = $('#datepicker').val();
-    console.log(birthday);
-
-    app.getBday(birthday);
+    var article = $('select').val();
+    // console.log(article);
+    app.getArticle(article);
   });
 };
 
 app.init = function () {
-  // Everything gets called inside of this function    
+  // Everything gets called inside of this function 
   app.userInput();
 };
 

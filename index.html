@@ -23,21 +23,32 @@
 		<meta name="msapplication-TileImage" content="favicon.ico/ms-icon-144x144.png">
 		<meta name="theme-color" content="#ffffff">
 	<title>My Project</title>
-
+	
 	<!-- external stylesheet -->
 	<link rel="stylesheet" href="public/styles/style.css">
 </head>
 <body>
 
-	<h1>Hello World!</h1>
+	<h1>A lazy Sunday afternoon!</h1>
+	<h3>Find an interesting news article and a coffee shop nearby to read it.</h3>
+	<form class="article">
 
-	<form>
-		<div>
-			<label for="datepicker">What's your birthday:</label>
-			<input type="text" id="datepicker">
+		<div class="location">
+			<label for="location">Where do you want to explore?</label> 
+			<input type="text" name="location">
 		</div>
+
+		<label for="">Pick an article topic?</label>
+		<select>
+			<option value="blockchain canada">Blockchain</option>
+			<option value="technology canada">Technology</option>
+			<option value="smart cars canada">Smart Cars</option>
+			<option value="social media technology canada">Social Media</option>
+		</select>
 		<input type="submit">
 	</form>
+
+	<div id="map"></div>
 
 	<footer>
 		<p>Powered by the NewsAPI.org.</p>
@@ -45,7 +56,13 @@
 	<!-- Load jQuery -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 	crossorigin="anonymous"></script>
-	
+
+	<!-- Import Google API Key -->
+	<script type='text/javascript' src='ublic/scripts/config.js'></script>
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBavmpD_MpHRi8g1wHxfXzqjv9ZCm4oZsc&callback=initMap" async defer></script>
+
+ 
 	<script src="public/scripts/main.js"></script>
 </body>
 </html>

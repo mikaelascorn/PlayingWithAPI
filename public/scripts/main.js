@@ -6,7 +6,7 @@ Get the product data and use the stored variables to get the data we need.
 
 */
 
-var apiKey = config.api_key;
+var mykey = config.MY_KEY;
 
 var app = {};
 

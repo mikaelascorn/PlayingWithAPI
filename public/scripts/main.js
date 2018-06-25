@@ -5,18 +5,14 @@ var app = {};
 app.selectedArticle = [];
 app.mykey = config.MY_KEY;
 
-// generic Map posting when app opens
-// app.initMap = function () {
-var map = void 0;
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat: 43.6482644, lng: -79.4000474 },
-    zoom: 12
-  });
-}
+app.drawMap = function () {
+  var script = document.createElement('script');
+  script.src = 'https://maps.googleapis.com/maps/api/js?key=' + app.mykey;
+  document.body.appendChild(script);
+};
 
 app.getCoffeeShop = function (long, lat) {
-  console.log(long, lat);
+  // console.log(long, lat);
   $.ajax({
     url: 'http://proxy.hackeryou.com',
     dataType: 'json',
@@ -34,21 +30,17 @@ app.getCoffeeShop = function (long, lat) {
     // Save the results in an array
     // console.log(res.results);
     var places = res.results;
-    app.getPlaces(places);
+    app.getPlaces(long, lat, places);
   }).fail(function (err) {
     throw err;
   });
 };
 
-app.getPlaces = function (places) {
-  console.log(places);
+app.getPlaces = function (long, lat, places) {
+  // console.log(places);
   var placesArray = [];
   if (places.length > 0) {
     for (var i = 0; i < places.length; i++) {
-      console.log(places[i].name);
-      console.log(places[i].vicinity);
-      console.log(places[i].rating);
-      console.log(places[i].geometry.location.lat, places[i].geometry.location.lng);
 
       var placesObject = {};
       placesObject = {
@@ -62,11 +54,53 @@ app.getPlaces = function (places) {
       placesArray.push(placesObject);
     }
     // Initializes map if locations are found
-    // app.initMap(lat, long, placesArray);
+    app.showPlaces(lat, long, placesArray);
   } else {
     //Displays fallback text if no locations are found
     $('#map').append('<h3>Sorry! There\'s no coffee shop around here.</h3>');
     console.log('no results for selected place');
+  }
+};
+
+// markers and cafe details on map
+app.showPlaces = function (lat, long, placesArray) {
+  var query1 = Number(lat);
+  var query2 = Number(long);
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 15,
+    center: { lat: query1, lng: query2 }
+  });
+
+  var location = new google.maps.Marker({
+    position: {
+      lat: query1,
+      lng: query2
+    },
+    map: map
+  });
+
+  var infowindow = new google.maps.InfoWindow();
+
+  var marker = void 0,
+      i = void 0;
+  var markers = [];
+  markers.push(placesArray);
+
+  // loop through all of the places
+  for (i = 0; i < placesArray.length; i++) {
+    // console.log(placesArray.length);
+    marker = new google.maps.Marker({
+      position: new google.maps.LatLng(placesArray[i].lat, placesArray[i].lng),
+      map: map
+    });
+    markers.push(marker);
+
+    google.maps.event.addListener(marker, 'click', function (marker, i) {
+      return function () {
+        infowindow.setContent('<p>Name: ' + placesArray[i].name + '</p> <p>Address: ' + placesArray[i].address + '</p> <p>Rating: ' + placesArray[i].rating + '</p>');
+        infowindow.open(map, marker);
+      };
+    }(marker, i));
   }
 };
 
@@ -86,13 +120,12 @@ app.getLocation = function (userLocation) {
     }
   }).then(function (res) {
     // console.log(res.results);
-    var locationLat = res.results[0].geometry.location.lat;
+    app.locationLat = res.results[0].geometry.location.lat;
     // console.log(locationLat);
-
-    var locationLong = res.results[0].geometry.location.lng;
+    app.locationLong = res.results[0].geometry.location.lng;
     // console.log(locationLong);
-
-    app.getCoffeeShop(locationLong, locationLat);
+    app.getCoffeeShop(app.locationLong, app.locationLat);
+    app.drawMap();
   }).fail(function (err) {
     throw err;
   });
@@ -110,7 +143,7 @@ app.postArticle = function (oneArticle) {
   var articlePhoto = oneArticle.urlToImage;
   var articleLink = oneArticle.url;
 
-  var postArticle = '<div class="userResult">\n    <h3>Your Article:</h3>\n      <h4>' + articleTitle + '</h4>\n      <h4>' + articleDescription + '</h4>\n      <a href="' + articleLink + '">Link to the article</h4>\n      <img src="' + articlePhoto + '">\n    </div>';
+  var postArticle = '<div class="userResult">\n    <h3>Your Article:</h3>\n      <h4>' + articleTitle + '</h4>\n      <h4>' + articleDescription + '</h4>\n      <a href="' + articleLink + '">Read the full article here!</h4>\n      <img src="' + articlePhoto + '">\n    </div>';
 
   $('.articleResult').append(postArticle);
 };

@@ -159,7 +159,7 @@ app.postArticle = function (oneArticle) {
 
   // if (articlePhoto ===)
 
-  var postArticle = '<div class="user-result">\n    <h3>Enjoy your lazy Sunday Funday \uD83D\uDC47</h3>\n      <div class="user-contents">\n        <div class="article-result">\n          <h4>' + articleTitle + '</h4>\n          <h5>' + articleDescription + '</h5>\n          <div class="article-info">\n            <a href="' + articleLink + '" target="_blank">Read the full article here!</a>\n            <img src="' + articlePhoto + '">\n          </div>\n        </div>\n  \n        <div class="user-map" id="map"></div>\n      </div>\n    </div>';
+  var postArticle = '<div class="user-result">\n    <h3>Enjoy your lazy Sunday Funday \uD83D\uDC47</h3>\n    <h4>' + articleTitle + '</h4>\n      <div class="user-contents">\n        <div class="article-result">\n          <h5>' + articleDescription + '</h5>\n          <div class="article-info">\n            <img src="' + articlePhoto + '">\n            <a href="' + articleLink + '" target="_blank">Click to read the full article!</a>\n          </div>\n        </div>\n  \n        <div class="user-map" id="map"></div>\n      </div>\n    </div>';
 
   $('.article-result').append(postArticle);
 };
@@ -178,33 +178,31 @@ app.getArticle = function (userArticle) {
   });
 };
 
-// users article choice
+// users article choice and location
 app.userInput = function () {
   $('form').on(' submit', function (e) {
     e.preventDefault();
-    var article = $('select').val();
     var userLocation = $('#location').val();
-    app.getLocation(userLocation);
-    app.getArticle(article);
+
+    if (userLocation == '') {
+      alert('pick a location');
+    } else {
+      var article = $('select').val();
+
+      app.getLocation(userLocation);
+      app.getArticle(article);
+    }
   });
 };
 
 app.reset = function (e) {
   $('.main-results .reset').on('click', function (e) {
     console.log('clicked');
-
     e.preventDefault();
     console.log('reset');
-    // location.reload();
     window.location.reload(true);
-    // $('html,body').scrollTop(0);
   });
 }; //FORM RESET
-
-// $('.reset-button').on('click', function () {
-//   location.reload();
-//   $('html,body').scrollTop(0);
-// });
 
 app.init = function () {
   // Everything gets called inside of this function 

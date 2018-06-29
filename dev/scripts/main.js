@@ -160,13 +160,13 @@ app.postArticle = (oneArticle) => {
 
   const postArticle = `<div class="user-result">
     <h3>Enjoy your lazy Sunday Funday 👇</h3>
+    <h4>${articleTitle}</h4>
       <div class="user-contents">
         <div class="article-result">
-          <h4>${articleTitle}</h4>
           <h5>${articleDescription}</h5>
           <div class="article-info">
-            <a href="${articleLink}" target="_blank">Read the full article here!</a>
             <img src="${articlePhoto}">
+            <a href="${articleLink}" target="_blank">Click to read the full article!</a>
           </div>
         </div>
   
@@ -192,33 +192,31 @@ app.getArticle = (userArticle) => {
   });
 }
 
-// users article choice
+// users article choice and location
 app.userInput = () => {
   $('form').on(' submit', (e) => {
     e.preventDefault()
-    const article = $('select').val();
     const userLocation = $('#location').val();
-    app.getLocation(userLocation);
-    app.getArticle(article);
+    
+    if ( userLocation == '' ) {
+      alert('pick a location');
+    } else {
+      const article = $('select').val();
+
+      app.getLocation(userLocation);
+      app.getArticle(article);      
+    }
   });
 };
 
 app.reset = (e) => {
   $('.main-results .reset').on('click', function (e) {
     console.log('clicked');
-    
     e.preventDefault();
     console.log('reset');
-    // location.reload();
     window.location.reload(true);
-    // $('html,body').scrollTop(0);
   });
 }; //FORM RESET
-
-// $('.reset-button').on('click', function () {
-//   location.reload();
-//   $('html,body').scrollTop(0);
-// });
 
 app.init = () => { // Everything gets called inside of this function 
   app.userInput();

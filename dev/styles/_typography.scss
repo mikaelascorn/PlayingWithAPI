@@ -22,29 +22,33 @@ h1 {
 h3 {
   @include fontSize(27);	
 }
-h4 {
-  @include fontSize(18);	
-}
 h5 {
   @include fontSize(16);	
 }
 h4,
 h5 {
-  margin: 10px 0px;
+  margin: 0px 0px 25px;
 }
 label,
 input
 select,
-.main-result a {
+textarea,
+.main-results a,
+h4 {
   @include fontSize(18);	
+  padding-bottom: 10px;
 }
-input,
-select {
+input {
   color: $secondary;
 }
-.main-result a {
-  color: white;
+select, textarea {
+  background-color: $primary;
 }
-.main-result a:hover {
-  color: $primary;
+.main-results a, 
+.article-result h5 {
+  color: $secondary;
+  text-decoration: none;
+}
+.main-results a:hover {
+  color: white;
 }

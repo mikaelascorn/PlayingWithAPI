@@ -5,58 +5,71 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<!-- Fauvicon -->
-		<link rel="apple-touch-icon" sizes="57x57" href="favicon.ico/apple-icon-57x57.png">
-		<link rel="apple-touch-icon" sizes="60x60" href="favicon.ico/apple-icon-60x60.png">
-		<link rel="apple-touch-icon" sizes="72x72" href="favicon.ico/apple-icon-72x72.png">
-		<link rel="apple-touch-icon" sizes="76x76" href="favicon.ico/apple-icon-76x76.png">
-		<link rel="apple-touch-icon" sizes="114x114" href="favicon.ico/apple-icon-114x114.png">
-		<link rel="apple-touch-icon" sizes="120x120" href="favicon.ico/apple-icon-120x120.png">
-		<link rel="apple-touch-icon" sizes="144x144" href="favicon.ico/apple-icon-144x144.png">
-		<link rel="apple-touch-icon" sizes="152x152" href="favicon.ico/apple-icon-152x152.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="favicon.ico/apple-icon-180x180.png">
-		<link rel="icon" type="image/png" sizes="192x192" href="favicon.ico/android-icon-192x192.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="favicon.ico/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="96x96" href="favicon.ico/favicon-96x96.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="favicon.ico/favicon-16x16.png">
-		<link rel="manifest" href="favicon.ico/manifest.json">
-		<meta name="msapplication-TileColor" content="#ffffff">
-		<meta name="msapplication-TileImage" content="favicon.ico/ms-icon-144x144.png">
-		<meta name="theme-color" content="#ffffff">
-	<title>My Project</title>
-	
+		<link rel="shortcut icon" href="your_new_images/favicon.ico" type="image/x-icon" />
+		<link rel="apple-touch-icon" sizes="57x57" href="your_new_images/apple-touch-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="your_new_images/apple-touch-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="your_new_images/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="your_new_images/apple-touch-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="your_new_images/apple-touch-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="your_new_images/apple-touch-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="your_new_images/apple-touch-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="your_new_images/apple-touch-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="your_new_images/apple-touch-icon-180x180.png">
+		<link rel="icon" type="image/png" href="your_new_images/favicon-16x16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="your_new_images/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="your_new_images/favicon-96x96.png" sizes="96x96">
+		<link rel="icon" type="image/png" href="your_new_images/android-chrome-192x192.png" sizes="192x192">
+		<meta name="msapplication-square70x70logo" content="your_new_images/smalltile.png" />
+		<meta name="msapplication-square150x150logo" content="your_new_images/mediumtile.png" />
+		<meta name="msapplication-wide310x150logo" content="your_new_images/widetile.png" />
+		<meta name="msapplication-square310x310logo" content="your_new_images/largetile.png" />
+	<title>Sunday Funday!</title>
+	<!-- Google fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display" rel="stylesheet">
 	<!-- external stylesheet -->
 	<link rel="stylesheet" href="public/styles/style.css">
 </head>
 <body>
 
-	<h1>A lazy Sunday afternoon!</h1>
-	<h3>Find an interesting news article and a coffee shop nearby to read it.</h3>
-	<form class="article">
+	<div class="main-content">
+		
+	
+			<div class="main-header">
+				<h1>A lazy Sunday afternoon!</h1>
+				<h3>Find a news article and a coffee shop nearby to read it.</h3>
+				<button class="start">Let's go!</button>
+			</div>
+			
+			<form class="article">
+	
+				<div class="location">
+					<label for="location">Where do you want to explore?</label> 
+					<input id="location" type="text" name="location">
+				</div>
+	
+				<div class="main-options">
+					<label>Pick a news topic?</label>
+					<select>
+						<option value="blockchain canada">Blockchain</option>
+						<option value="smart cars canada">Smart Cars</option>
+						<option value="social media technology canada">Social Media</option>
+						<option value="technology canada">Technology</option>
+					</select>
+					<input type="submit">
+				</div>
+				
+			</form>
+		
 
-		<div class="location">
-			<label for="location">Where do you want to explore?</label> 
-			<input id="location" type="text" name="location">
+		<div class="main-results">	
+			<section class="article-result">
+
+				
+			</section>
+			<button class="reset">Try again!</button>
 		</div>
 
-		<label for="">Pick a news topic?</label>
-		<select>
-			<option value="blockchain canada">Blockchain</option>
-			<option value="smart cars canada">Smart Cars</option>
-			<option value="social media technology canada">Social Media</option>
-			<option value="technology canada">Technology</option>
-			<option value=""></option>
-		</select>
-		<input type="submit">
-		
-	</form>
-
-	<div id="map"></div>
-	<script></script>
-
-	<section class="articleResult">
-		<!-- <button>Give me another article!</button> -->
-	</section>
-
+	</div>
 	<footer>
 		<p>Powered by the NewsAPI.org.</p>
 		<p>Made by <a href="http://www.mikaelamade.com">Mikaela</a></p>

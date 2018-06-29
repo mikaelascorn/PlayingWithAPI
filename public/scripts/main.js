@@ -136,16 +136,32 @@ app.randomArticle = function (arrayNum) {
   app.postArticle(arrayNum[articleIndex]);
 };
 
+app.startButton = function () {
+  $('.start').on('click', function (e) {
+    e.preventDefault();
+    $('.main-header').fadeOut();
+    $('.article').fadeIn();
+  });
+};
+
 app.postArticle = function (oneArticle) {
-  $('.articleResult').empty();
+  $('.article-result').empty();
+
+  $('.main-results').show();
+  $('.article').fadeOut();
   var articleTitle = oneArticle.title;
   var articleDescription = oneArticle.description;
-  var articlePhoto = oneArticle.urlToImage;
   var articleLink = oneArticle.url;
 
-  var postArticle = '<div class="userResult">\n    <h3>Your Article:</h3>\n      <h4>' + articleTitle + '</h4>\n      <h4>' + articleDescription + '</h4>\n      <a href="' + articleLink + '">Read the full article here!</h4>\n      <img src="' + articlePhoto + '">\n    </div>';
+  var articlePhoto = oneArticle.urlToImage;
+  console.log(articlePhoto);
+  console.log(oneArticle);
 
-  $('.articleResult').append(postArticle);
+  // if (articlePhoto ===)
+
+  var postArticle = '<div class="user-result">\n    <h3>Enjoy your lazy Sunday Funday \uD83D\uDC47</h3>\n      <div class="user-contents">\n        <div class="article-result">\n          <h4>' + articleTitle + '</h4>\n          <h5>' + articleDescription + '</h5>\n          <div class="article-info">\n            <a href="' + articleLink + '" target="_blank">Read the full article here!</a>\n            <img src="' + articlePhoto + '">\n          </div>\n        </div>\n  \n        <div class="user-map" id="map"></div>\n      </div>\n    </div>';
+
+  $('.article-result').append(postArticle);
 };
 
 // News API
@@ -173,9 +189,28 @@ app.userInput = function () {
   });
 };
 
+app.reset = function (e) {
+  $('.main-results .reset').on('click', function (e) {
+    console.log('clicked');
+
+    e.preventDefault();
+    console.log('reset');
+    // location.reload();
+    window.location.reload(true);
+    // $('html,body').scrollTop(0);
+  });
+}; //FORM RESET
+
+// $('.reset-button').on('click', function () {
+//   location.reload();
+//   $('html,body').scrollTop(0);
+// });
+
 app.init = function () {
   // Everything gets called inside of this function 
   app.userInput();
+  app.reset();
+  app.startButton();
 };
 
 // Document ready

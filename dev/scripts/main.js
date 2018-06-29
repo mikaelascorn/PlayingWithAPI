@@ -130,28 +130,51 @@ app.getLocation = (userLocation) => {
   })
 };
 
-
 app.randomArticle = (arrayNum) => {
   const articleIndex = Math.floor(Math.random() * arrayNum.length);
   app.postArticle(arrayNum[articleIndex]);
 }
 
+app.startButton = () => {
+  $('.start').on('click', (e) => {
+    e.preventDefault();
+    $('.main-header').fadeOut();
+    $('.article').fadeIn();
+  });
+}
+
 app.postArticle = (oneArticle) => {
-  $('.articleResult').empty();
+  $('.article-result').empty();
+  
+  $('.main-results').show();
+  $('.article').fadeOut();
   const articleTitle = oneArticle.title;
   const articleDescription = oneArticle.description;
-  const articlePhoto = oneArticle.urlToImage;
   const articleLink = oneArticle.url;
+  
+  const articlePhoto = oneArticle.urlToImage;
+  console.log(articlePhoto);
+  console.log(oneArticle);
+  
+  // if (articlePhoto ===)
 
-  const postArticle = `<div class="userResult">
-    <h3>Your Article:</h3>
-      <h4>${articleTitle}</h4>
-      <h4>${articleDescription}</h4>
-      <a href="${articleLink}">Read the full article here!</h4>
-      <img src="${articlePhoto}">
+  const postArticle = `<div class="user-result">
+    <h3>Enjoy your lazy Sunday Funday 👇</h3>
+      <div class="user-contents">
+        <div class="article-result">
+          <h4>${articleTitle}</h4>
+          <h5>${articleDescription}</h5>
+          <div class="article-info">
+            <a href="${articleLink}" target="_blank">Read the full article here!</a>
+            <img src="${articlePhoto}">
+          </div>
+        </div>
+  
+        <div class="user-map" id="map"></div>
+      </div>
     </div>`
 
-  $('.articleResult').append(postArticle);
+  $('.article-result').append(postArticle);
 }
 
 // News API
@@ -180,8 +203,27 @@ app.userInput = () => {
   });
 };
 
+app.reset = (e) => {
+  $('.main-results .reset').on('click', function (e) {
+    console.log('clicked');
+    
+    e.preventDefault();
+    console.log('reset');
+    // location.reload();
+    window.location.reload(true);
+    // $('html,body').scrollTop(0);
+  });
+}; //FORM RESET
+
+// $('.reset-button').on('click', function () {
+//   location.reload();
+//   $('html,body').scrollTop(0);
+// });
+
 app.init = () => { // Everything gets called inside of this function 
   app.userInput();
+  app.reset();
+  app.startButton();
 };
 
 // Document ready

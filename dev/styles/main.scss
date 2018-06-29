@@ -1,19 +1,29 @@
+$primary: #60E0B7;
+$secondary: #333333;
+
 @import 'setup';
-
-@mixin fontSize($scale) {
-	font-size: $scale * 1px;
-	font-size: ($scale / 10) * 1rem;
-}
-
-html {
-	font-size: 62.5%;
-}
+@import 'general';
+@import 'typography';
+@import 'results';
 
 body {	
-	@include fontSize(12);	
-	background-color: pink;
+	background-color: $secondary;
+	background-image: url(../assets/hero.jpg);
+	background-position: center;
+	background-size: cover;
+	background-repeat: repeat;
+	// height: 100vh;
+	height: auto;
 }
 
 #map {
-	height: 50vh;
+	max-height: 500px;
+	width: 500px;
+	color: $secondary;
+}
+
+footer {
+	display: flex;
+	flex-direction: column;
+	align-content: flex-end;
 }

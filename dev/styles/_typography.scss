@@ -1,0 +1,50 @@
+@mixin fontSize($scale) {
+	font-size: $scale * 1px;
+	font-size: ($scale / 10) * 1rem;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {	
+  @include fontSize(12);
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+  @include fontSize(37);	
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+  font-family: 'Playfair Display', serif;
+}
+
+h3 {
+  @include fontSize(27);	
+}
+h4 {
+  @include fontSize(18);	
+}
+h5 {
+  @include fontSize(16);	
+}
+h4,
+h5 {
+  margin: 10px 0px;
+}
+label,
+input
+select,
+.main-result a {
+  @include fontSize(18);	
+}
+input,
+select {
+  color: $secondary;
+}
+.main-result a {
+  color: white;
+}
+.main-result a:hover {
+  color: $primary;
+}

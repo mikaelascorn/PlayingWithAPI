@@ -1,0 +1,25 @@
+.main-results {
+  // display: flex;
+  .user-contents{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    .article-result {
+      display: flex;
+      flex-direction: column;
+      width: 40%;
+      margin-right: 50px;
+    }
+    .user-result {
+      margin: 10px 0px;
+    }
+    .user-map {
+      // max-width: 60%;
+    }
+  }
+  
+  img {
+    width: 100%;
+  }
+  
+}

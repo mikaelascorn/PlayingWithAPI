@@ -28,6 +28,10 @@
     margin: auto;
   }
 }
+.start:hover,
+.reset:hover {
+  background: white;
+}
 @media(max-width: 768px) {
   .main-results {
     .user-contents {
@@ -47,8 +51,15 @@
         max-width: 500px;
         margin: auto;
       }
-      .article-info {
+    }
+  }
+}
 
+@media (max-width: 650px) {
+   .main-results {
+    .user-contents {
+      .article-result {
+        max-width: 310px;
       }
     }
   }

@@ -32,38 +32,32 @@
 <body>
 
 	<div class="main-content">
+		<div class="main-header">
+			<h1>A lazy Sunday Funday!</h1>
+			<h3>Find a news article and a coffee shop nearby to read it.</h3>
+			<button class="start">Let's go!</button>
+		</div>
 		
-	
-			<div class="main-header">
-				<h1>A lazy Sunday afternoon!</h1>
-				<h3>Find a news article and a coffee shop nearby to read it.</h3>
-				<button class="start">Let's go!</button>
+		<form class="article">
+			<div class="location">
+				<label for="location">Where do you want to explore?</label> 
+				<input id="location" type="text" name="location" placeholder="M5A 3W7">
 			</div>
-			
-			<form class="article">
-	
-				<div class="location">
-					<label for="location">Where do you want to explore?</label> 
-					<input id="location" type="text" name="location">
-				</div>
-	
-				<div class="main-options">
-					<label>Pick a news topic?</label>
-					<select>
-						<option value="blockchain canada">Blockchain</option>
-						<option value="smart cars canada">Smart Cars</option>
-						<option value="social media technology canada">Social Media</option>
-						<option value="technology canada">Technology</option>
-					</select>
-					<input type="submit">
-				</div>
-				
-			</form>
-		
 
+			<div class="main-options">
+				<label>Pick a news topic?</label>
+				<select>
+					<option value="blockchain canada">Blockchain</option>
+					<option value="smart cars canada">Smart Cars</option>
+					<option value="social media technology canada">Social Media</option>
+					<option value="technology canada">Technology</option>
+				</select>
+				<input type="submit">
+			</div>		
+		</form>
+	
 		<div class="main-results">	
 			<section class="article-result">
-
 				
 			</section>
 			<button class="reset">Try again!</button>

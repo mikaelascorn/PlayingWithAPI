@@ -12,7 +12,6 @@ body {
 	background-position: center;
 	background-size: cover;
 	background-repeat: repeat;
-	// height: 100vh;
 	height: auto;
 }
 
@@ -29,10 +28,25 @@ body {
 
 footer {
 	text-align: center;
+	a {
+		text-decoration: none;
+		color: white;
+		&:hover {
+			color: $primary;
+		}
+	}
 }
 
 @media(max-width: 768px) {
+	body {
+		height: auto;
+	}
 	#map {
 			margin: 20px auto 0px;
+	}
+}
+@media(max-width: 650px) {
+	#map {
+		width: 310px;
 	}
 }

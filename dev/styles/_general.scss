@@ -16,8 +16,9 @@
     }
   }
 }
+
 .reset {
-  // display: none;
+  display: none;
 }
 
 form  {
@@ -48,3 +49,17 @@ button {
     color: $secondary;
     margin-top: 25px;
   }
+
+@media(max-width: 650px) {
+  .main-content {
+    max-width: 100%;
+    height: auto;
+    .main-header {
+      max-width: 95%;
+    }
+    .article {
+      padding-top: 85px;
+    }
+  }
+
+}

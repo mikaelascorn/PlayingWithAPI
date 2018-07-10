@@ -147,7 +147,8 @@ app.startButton = function () {
 app.postArticle = function (oneArticle) {
   $('.article-result').empty();
 
-  $('.main-results').show();
+  $('.main-results').fadeIn();
+  $('.main-results .reset').fadeIn();
   $('.article').fadeOut();
   var articleTitle = oneArticle.title;
   var articleDescription = oneArticle.description;
@@ -156,8 +157,6 @@ app.postArticle = function (oneArticle) {
   var articlePhoto = oneArticle.urlToImage;
   console.log(articlePhoto);
   console.log(oneArticle);
-
-  // if (articlePhoto ===)
 
   var postArticle = '<div class="user-result">\n    <h3>Enjoy your lazy Sunday Funday \uD83D\uDC47</h3>\n    <h4>' + articleTitle + '</h4>\n      <div class="user-contents">\n        <div class="article-result">\n          <h5>' + articleDescription + '</h5>\n          <div class="article-info">\n            <img src="' + articlePhoto + '">\n            <a href="' + articleLink + '" target="_blank">Click to read the full article!</a>\n          </div>\n        </div>\n  \n        <div class="user-map" id="map"></div>\n      </div>\n    </div>';
 

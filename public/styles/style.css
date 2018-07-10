@@ -155,6 +155,9 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
     .main-content .main-header h3 {
       padding-bottom: 20px; }
 
+.reset {
+  display: none; }
+
 form {
   display: none; }
   form .location {
@@ -177,6 +180,15 @@ button {
   border-radius: 3px;
   color: #333333;
   margin-top: 25px; }
+
+@media (max-width: 650px) {
+  .main-content {
+    max-width: 100%;
+    height: auto; }
+    .main-content .main-header {
+      max-width: 95%; }
+    .main-content .article {
+      padding-top: 85px; } }
 
 html {
   font-size: 62.5%; }
@@ -267,6 +279,10 @@ select, textarea {
   display: block;
   margin: auto; }
 
+.start:hover,
+.reset:hover {
+  background: white; }
+
 @media (max-width: 768px) {
   .main-results .user-contents .article-result {
     width: 40%; } }
@@ -278,6 +294,10 @@ select, textarea {
       width: 100%;
       max-width: 500px;
       margin: auto; } }
+
+@media (max-width: 650px) {
+  .main-results .user-contents .article-result {
+    max-width: 310px; } }
 
 body {
   background-color: #333333;
@@ -299,7 +319,18 @@ body {
 
 footer {
   text-align: center; }
+  footer a {
+    text-decoration: none;
+    color: white; }
+    footer a:hover {
+      color: #60E0B7; }
 
 @media (max-width: 768px) {
+  body {
+    height: auto; }
   #map {
     margin: 20px auto 0px; } }
+
+@media (max-width: 650px) {
+  #map {
+    width: 310px; } }

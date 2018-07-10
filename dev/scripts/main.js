@@ -146,7 +146,8 @@ app.startButton = () => {
 app.postArticle = (oneArticle) => {
   $('.article-result').empty();
   
-  $('.main-results').show();
+  $('.main-results').fadeIn();
+  $('.main-results .reset').fadeIn();
   $('.article').fadeOut();
   const articleTitle = oneArticle.title;
   const articleDescription = oneArticle.description;
@@ -156,8 +157,6 @@ app.postArticle = (oneArticle) => {
   console.log(articlePhoto);
   console.log(oneArticle);
   
-  // if (articlePhoto ===)
-
   const postArticle = `<div class="user-result">
     <h3>Enjoy your lazy Sunday Funday 👇</h3>
     <h4>${articleTitle}</h4>
